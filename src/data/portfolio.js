@@ -74,7 +74,6 @@ export const experience = [
       },
       {
         label: '2025–2026 · Push Back',
-        repoUrl: 'https://github.com/Elias-Hynes/5225A-2025-2026/tree/alex-code',
         awards: ['Think Award — 2026 VEX Worlds'],
         bullets: ['[Add what you worked on this season — e.g. a specific subsystem, feature, or redesign]'],
         media: [],
