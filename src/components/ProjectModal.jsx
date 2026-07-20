@@ -34,12 +34,19 @@ export default function ProjectModal({ project, onClose }) {
 
         <div className="modal-header">
           <h3>{project.title}</h3>
-          <div className="tag-row">
-            {project.tags.map((tag) => (
-              <span key={tag} className="tag">
-                {tag}
-              </span>
-            ))}
+          <div className="modal-tag-bar">
+            <div className="tag-row">
+              {project.tags.map((tag) => (
+                <span key={tag} className="tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            {project.repoUrl && (
+              <a className="season-repo-link" href={project.repoUrl} target="_blank" rel="noreferrer">
+                <Icon name="github" size={14} /> Code
+              </a>
+            )}
           </div>
         </div>
 
@@ -59,18 +66,11 @@ export default function ProjectModal({ project, onClose }) {
           )}
         </div>
 
-        {(project.liveUrl || project.repoUrl) && (
+        {project.liveUrl && (
           <div className="modal-links">
-            {project.liveUrl && (
-              <a className="button button-primary" href={project.liveUrl} target="_blank" rel="noreferrer">
-                Live <Icon name="external" size={14} />
-              </a>
-            )}
-            {project.repoUrl && (
-              <a className="button button-secondary" href={project.repoUrl} target="_blank" rel="noreferrer">
-                Code <Icon name="github" size={14} />
-              </a>
-            )}
+            <a className="button button-primary" href={project.liveUrl} target="_blank" rel="noreferrer">
+              Live <Icon name="external" size={14} />
+            </a>
           </div>
         )}
       </div>
