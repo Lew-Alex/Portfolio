@@ -35,6 +35,8 @@ export const experience = [
     companyUrl: '',
     dates: 'Jun 2022 – Jun 2026',
     location: 'Oakville, ON',
+    // Shown as a thumbnail on the right of the collapsed card.
+    image: '/images/high-stakes-robot.png',
     tags: ['C++', 'PID Control', 'Odometry', 'Fusion 360'],
     // Shown as the single bullet on the collapsed card.
     awardsSummary:
@@ -55,14 +57,14 @@ export const experience = [
           '8th of 20,000+ teams in Autonomous Skills at Worlds',
           'Design Award — 2025 Ontario Provincials',
         ],
-        bullets: ['[Add what you worked on this season — e.g. a specific subsystem, feature, or redesign]'],
+        bullets: ['Add Later'],
         media: [],
       },
       {
         label: '2025–2026 · Push Back',
         awards: ['Think Award — 2026 VEX Worlds', 'Innovate Award — 2026 Ontario Provincials'],
-        bullets: ['[Add what you worked on this season — e.g. a specific subsystem, feature, or redesign]'],
-        media: [],
+        bullets: ['Add Later'],
+        media: [{ type: 'video', src: '/videos/push-back-1.mp4', caption: '' }],
       },
       {
         label: '2024–2025 · High Stakes',
@@ -99,16 +101,17 @@ export const projects = [
       'Add a sentence on the challenge it solved and how it navigated/competed.',
       'Add another paragraph on the build process, biggest technical challenge, and the result.',
     ],
-    highlights: [
-      '[Add a spec — e.g. sensors used]',
-      '[Add a spec — e.g. programming language/platform]',
-      '[Add a result — e.g. competition placement]',
-    ],
+    highlights: ['Add Later'],
     image: '/images/wro-robot-1.jpg',
-    media: [{ type: 'video', src: '/videos/wro-robot-1.mp4', caption: '' }],
+    media: [
+      { type: 'video', src: '/videos/wro-robot-1.mp4', caption: '' },
+      { type: 'image', src: '/images/wro-robot-2.jpg', caption: '' },
+      { type: 'image', src: '/images/wro-robot-3.jpg', caption: '' },
+    ],
     tags: ['Robotics', 'Autonomous Systems', 'ESP32', 'Odometry & Motion Algorithms'],
     liveUrl: null,
     repoUrl: 'https://github.com/Lew-Alex/WRO-PiThons-2026',
+    cadUrl: '/models/robot.glb',
     featured: true,
   },
   {
@@ -118,11 +121,7 @@ export const projects = [
       'Add detail on the mechanical design and what it improved over a standard drivetrain.',
       'Add a paragraph on the CAD/manufacturing process and any testing/iteration.',
     ],
-    highlights: [
-      '[Add a spec — e.g. gear ratio]',
-      '[Add a spec — e.g. CAD software used]',
-      '[Add a result — e.g. performance improvement]',
-    ],
+    highlights: ['Add Later'],
     image: '/images/swerve-2.jpg',
     media: [
       { type: 'video', src: '/videos/swerve-1.mp4', caption: '' },
@@ -143,11 +142,7 @@ export const projects = [
       'Add detail on the actuation method (servos/tendons), degrees of freedom, and what it can grip or control.',
       'Add a paragraph on the design/print process and how it was controlled.',
     ],
-    highlights: [
-      '[Add a spec — e.g. number of fingers/DOF]',
-      '[Add a spec — e.g. actuator type]',
-      '[Add a result — e.g. what it can grip]',
-    ],
+    highlights: ['Add Later'],
     image: '/images/robotic-hand-2.jpg',
     media: [
       { type: 'image', src: '/images/robotic-hand-1.jpg', caption: '' },
@@ -165,11 +160,7 @@ export const projects = [
       'Add detail on the sensors/electronics used and how it was calibrated.',
       'Add a paragraph on how it was mounted/used on the boat and what problem it solved.',
     ],
-    highlights: [
-      '[Add a spec — e.g. sensor/IC used]',
-      '[Add a spec — e.g. microcontroller]',
-      '[Add a result — e.g. accuracy achieved]',
-    ],
+    highlights: ['Add Later'],
     image: null,
     media: [],
     tags: ['Electronics', 'Embedded Systems'],

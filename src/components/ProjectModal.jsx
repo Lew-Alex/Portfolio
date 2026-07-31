@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Icon from './Icon'
 import MediaCarousel from './MediaCarousel'
+import ModelViewer from './ModelViewer'
 
 export default function ProjectModal({ project, onClose }) {
   useEffect(() => {
@@ -71,6 +72,12 @@ export default function ProjectModal({ project, onClose }) {
             <a className="button button-primary" href={project.liveUrl} target="_blank" rel="noreferrer">
               Live <Icon name="external" size={14} />
             </a>
+          </div>
+        )}
+
+        {project.cadUrl && (
+          <div className="cad-section">
+            <ModelViewer src={project.cadUrl} />
           </div>
         )}
       </div>

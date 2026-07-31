@@ -29,48 +29,56 @@ export default function Experience() {
                   }
                 }}
               >
-                <div className="timeline-header">
-                  <h3>
-                    {job.role} ·{' '}
-                    {job.companyUrl ? (
-                      <a
-                        href={job.companyUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        {job.company}
-                      </a>
-                    ) : (
-                      job.company
-                    )}
-                  </h3>
-                  <span className="timeline-dates">{job.dates}</span>
-                </div>
-                <p className="timeline-location">{job.location}</p>
-                {job.awardsSummary && (
-                  <ul className="timeline-bullets">
-                    <li>{job.awardsSummary}</li>
-                  </ul>
-                )}
-                {job.bullets?.length > 0 && (
-                  <ul className="timeline-bullets">
-                    {job.bullets.map((b, i) => (
-                      <li key={i}>{b}</li>
+                <div className="timeline-main">
+                  <div className="timeline-header">
+                    <h3>
+                      {job.role} ·{' '}
+                      {job.companyUrl ? (
+                        <a
+                          href={job.companyUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {job.company}
+                        </a>
+                      ) : (
+                        job.company
+                      )}
+                    </h3>
+                    <span className="timeline-dates">{job.dates}</span>
+                  </div>
+                  <p className="timeline-location">{job.location}</p>
+                  {job.awardsSummary && (
+                    <ul className="timeline-bullets">
+                      <li>{job.awardsSummary}</li>
+                    </ul>
+                  )}
+                  {job.bullets?.length > 0 && (
+                    <ul className="timeline-bullets">
+                      {job.bullets.map((b, i) => (
+                        <li key={i}>{b}</li>
+                      ))}
+                    </ul>
+                  )}
+                  <div className="tag-row">
+                    {job.tags.map((tag) => (
+                      <span key={tag} className="tag">
+                        {tag}
+                      </span>
                     ))}
-                  </ul>
-                )}
-                <div className="tag-row">
-                  {job.tags.map((tag) => (
-                    <span key={tag} className="tag">
-                      {tag}
-                    </span>
-                  ))}
+                  </div>
+
+                  <span className="expand-hint">
+                    View details <Icon name="expand" size={14} />
+                  </span>
                 </div>
 
-                <span className="expand-hint">
-                  View details <Icon name="expand" size={14} />
-                </span>
+                {job.image && (
+                  <div className="timeline-thumb">
+                    <img src={job.image} alt="" />
+                  </div>
+                )}
               </div>
             </li>
           )

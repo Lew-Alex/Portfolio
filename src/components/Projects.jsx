@@ -46,7 +46,7 @@ export default function Projects() {
               </div>
 
               <span className="expand-hint">
-                View details <Icon name="expand" size={14} />
+                {project.cadUrl ? 'View Details And CAD' : 'View details'} <Icon name="expand" size={14} />
               </span>
             </div>
           </article>

@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Large source CAD files kept locally only — see public/models/ for the
+# compressed .glb actually used by the site.
+/Robot.obj
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
