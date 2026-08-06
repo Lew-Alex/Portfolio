@@ -1,5 +1,4 @@
-:root,
-[data-theme='light'] {
+:root {
   --bg: #f2f4f7;
   --bg-alt: #e8eaef;
   --text: #43454b;
@@ -11,32 +10,9 @@
   --accent-bg: rgba(37, 99, 235, 0.08);
   --accent-border: rgba(37, 99, 235, 0.35);
   --shadow: rgba(20, 21, 26, 0.08) 0 10px 25px -5px, rgba(20, 21, 26, 0.04) 0 4px 6px -2px;
-  --glow-1: rgba(37, 99, 235, 0.18);
-  --glow-2: rgba(14, 165, 233, 0.15);
-  --glow-3: rgba(100, 106, 120, 0.2);
-  --wash: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, transparent 45%, rgba(100, 106, 120, 0.06) 100%);
-  --dot-color: rgba(20, 21, 26, 0.08);
+  --grid-line: rgba(20, 21, 26, 0.045);
+  --grid-line-major: rgba(20, 21, 26, 0.075);
   color-scheme: light;
-}
-
-[data-theme='dark'] {
-  --bg: #0a0e17;
-  --bg-alt: #121826;
-  --text: #b7bccb;
-  --text-h: #f5f6f8;
-  --text-muted: #838a9c;
-  --border: #232a3a;
-  --card-bg: #111726;
-  --accent: #60a5fa;
-  --accent-bg: rgba(96, 165, 250, 0.14);
-  --accent-border: rgba(96, 165, 250, 0.4);
-  --shadow: rgba(0, 0, 0, 0.45) 0 10px 25px -5px, rgba(0, 0, 0, 0.3) 0 4px 6px -2px;
-  --glow-1: rgba(59, 130, 246, 0.22);
-  --glow-2: rgba(56, 189, 248, 0.14);
-  --glow-3: rgba(148, 163, 184, 0.08);
-  --wash: none;
-  --dot-color: rgba(255, 255, 255, 0.05);
-  color-scheme: dark;
 }
 
 * {
@@ -66,13 +42,13 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background-image:
-    radial-gradient(650px circle at 12% -8%, var(--glow-1), transparent 60%),
-    radial-gradient(550px circle at 90% 15%, var(--glow-2), transparent 55%),
-    radial-gradient(600px circle at 78% 92%, var(--glow-3), transparent 60%),
-    radial-gradient(500px circle at 50% 100%, var(--glow-1), transparent 55%),
-    var(--wash),
-    radial-gradient(var(--dot-color) 1px, transparent 1px);
-  background-size: auto, auto, auto, auto, auto, 26px 26px;
+    linear-gradient(var(--grid-line-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-major) 1px, transparent 1px),
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 168px 168px, 168px 168px, 24px 24px, 24px 24px;
+  mask-image: radial-gradient(1100px circle at 18% 0%, black 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(1100px circle at 18% 0%, black 0%, transparent 75%);
 }
 
 h1,

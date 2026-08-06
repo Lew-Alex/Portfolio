@@ -1,40 +1,43 @@
 import { useEffect } from 'react'
-import Icon from './Icon'
-import MediaCarousel from './MediaCarousel'
-import ModelViewer from './ModelViewer'
+import { Link, useParams } from 'react-router'
+import Icon from '../components/Icon'
+import MediaCarousel from '../components/MediaCarousel'
+import ModelViewer from '../components/ModelViewer'
+import { projects } from '../data/portfolio'
 
-export default function ProjectModal({ project, onClose }) {
+export default function ProjectPage() {
+  const { slug } = useParams()
+  const project = projects.find((p) => p.slug === slug)
+
   useEffect(() => {
-    if (!project) return
+    window.scrollTo({ top: 0 })
+  }, [slug])
 
-    const onKeyDown = (e) => {
-      if (e.key === 'Escape') onClose()
-    }
-    document.addEventListener('keydown', onKeyDown)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', onKeyDown)
-      document.body.style.overflow = ''
-    }
-  }, [project, onClose])
-
-  if (!project) return null
+  if (!project) {
+    return (
+      <main>
+        <section className="section detail-page">
+          <Link to="/#projects" className="detail-back">
+            <Icon name="chevronLeft" size={16} /> Back to projects
+          </Link>
+          <h1>Project not found</h1>
+          <p className="detail-meta">That project doesn't exist, or the link may be out of date.</p>
+        </section>
+      </main>
+    )
+  }
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div
-        className="modal-panel"
-        role="dialog"
-        aria-modal="true"
-        aria-label={project.title}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button type="button" className="icon-button modal-close" onClick={onClose} aria-label="Close">
-          <Icon name="close" size={18} />
-        </button>
+    <main>
+      <section className="section detail-page">
+        <Link to="/#projects" className="detail-back">
+          <Icon name="chevronLeft" size={16} /> Back to projects
+        </Link>
 
-        <div className="modal-header">
-          <h3>{project.title}</h3>
+        <div className="detail-header">
+          <h1>{project.title}</h1>
+          <p className="detail-meta">{project.description}</p>
+
           <div className="modal-tag-bar">
             <div className="tag-row">
               {project.tags.map((tag) => (
@@ -80,7 +83,7 @@ export default function ProjectModal({ project, onClose }) {
             <ModelViewer src={project.cadUrl} />
           </div>
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }

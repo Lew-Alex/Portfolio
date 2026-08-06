@@ -1,28 +1,26 @@
+import { BrowserRouter, Route, Routes } from 'react-router'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Experience from './components/Experience'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
-import useTheme from './hooks/useTheme'
+import HomePage from './pages/HomePage'
+import ProjectPage from './pages/ProjectPage'
+import ExperiencePage from './pages/ExperiencePage'
+import SeasonPage from './pages/SeasonPage'
+import NotFoundPage from './pages/NotFoundPage'
 import './App.css'
 
 function App() {
-  const { theme, toggleTheme } = useTheme()
-
   return (
-    <>
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Contact />
-      </main>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects/:slug" element={<ProjectPage />} />
+        <Route path="/experience" element={<ExperiencePage />} />
+        <Route path="/experience/:slug" element={<SeasonPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
       <Footer />
-    </>
+    </BrowserRouter>
   )
 }
 

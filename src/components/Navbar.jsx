@@ -1,15 +1,16 @@
 import { useState } from 'react'
+import { Link } from 'react-router'
 import Icon from './Icon'
 import { profile } from '../data/portfolio'
 
 const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', hash: '#about' },
+  { label: 'Experience', hash: '#experience' },
+  { label: 'Projects', hash: '#projects' },
+  { label: 'Contact', hash: '#contact' },
 ]
 
-export default function Navbar({ theme, toggleTheme }) {
+export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   const handleLinkClick = () => setOpen(false)
@@ -17,27 +18,19 @@ export default function Navbar({ theme, toggleTheme }) {
   return (
     <header className="navbar">
       <div className="navbar-inner">
-        <a href="#top" className="navbar-brand" onClick={handleLinkClick}>
+        <Link to="/#top" className="navbar-brand" onClick={handleLinkClick}>
           {profile.name}
-        </a>
+        </Link>
 
         <nav className={`navbar-links ${open ? 'is-open' : ''}`}>
           {links.map((link) => (
-            <a key={link.href} href={link.href} onClick={handleLinkClick}>
+            <Link key={link.hash} to={`/${link.hash}`} onClick={handleLinkClick}>
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="navbar-actions">
-          <button
-            type="button"
-            className="icon-button"
-            onClick={toggleTheme}
-            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-          >
-            <Icon name={theme === 'dark' ? 'sun' : 'moon'} size={18} />
-          </button>
           <button
             type="button"
             className="icon-button navbar-toggle"
