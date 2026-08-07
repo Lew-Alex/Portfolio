@@ -29,40 +29,39 @@ export default function ProjectPage() {
 
   return (
     <main>
-      <section className="section detail-page">
-        <Link to="/#projects" className="detail-back">
-          <Icon name="chevronLeft" size={16} /> Back to projects
-        </Link>
+      <section className="section detail-page simple-project">
+        <MediaCarousel items={project.media} emptyLabel="Add photos or videos of this project" />
 
-        <div className="detail-header">
+        <div className="simple-head">
           <h1>{project.title}</h1>
-          <p className="detail-meta">{project.description}</p>
+          <p className="simple-sub">{project.description}</p>
 
-          <div className="modal-tag-bar">
-            <div className="tag-row">
-              {project.tags.map((tag) => (
-                <span key={tag} className="tag">
-                  {tag}
-                </span>
-              ))}
-            </div>
+          <div className="simple-meta">
+            {project.tags.map((tag) => (
+              <span key={tag} className="simple-tag">
+                {tag}
+              </span>
+            ))}
             {project.repoUrl && (
-              <a className="season-repo-link" href={project.repoUrl} target="_blank" rel="noreferrer">
-                <Icon name="github" size={14} /> Code
+              <a className="simple-tag simple-tag-link" href={project.repoUrl} target="_blank" rel="noreferrer">
+                Code
+              </a>
+            )}
+            {project.liveUrl && (
+              <a className="simple-tag simple-tag-link" href={project.liveUrl} target="_blank" rel="noreferrer">
+                Live
               </a>
             )}
           </div>
         </div>
 
-        <MediaCarousel items={project.media} emptyLabel="Add photos or videos of this project" />
-
-        <div className="modal-body">
+        <div className="simple-body">
           {project.details.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
 
           {project.highlights?.length > 0 && (
-            <ul className="modal-highlights">
+            <ul className="simple-list">
               {project.highlights.map((h, i) => (
                 <li key={i}>{h}</li>
               ))}
@@ -70,19 +69,15 @@ export default function ProjectPage() {
           )}
         </div>
 
-        {project.liveUrl && (
-          <div className="modal-links">
-            <a className="button button-primary" href={project.liveUrl} target="_blank" rel="noreferrer">
-              Live <Icon name="external" size={14} />
-            </a>
-          </div>
-        )}
-
         {project.cadUrl && (
           <div className="cad-section">
             <ModelViewer src={project.cadUrl} />
           </div>
         )}
+
+        <Link to="/#projects" className="simple-back">
+          ← Back to projects
+        </Link>
       </section>
     </main>
   )
