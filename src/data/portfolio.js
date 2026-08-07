@@ -9,7 +9,7 @@
 export const profile = {
   name: 'Alex Lewandowski',
   role: 'Incoming Mechatronics Student @ University of Waterloo',
-  tagline: 'Seeking a Winter 2026 internship.',
+  tagline: 'Seeking a Winter 2027 internship.',
   location: 'City, State',
   email: 'alexlewandowski08@gmail.com',
   resumeUrl: '/resume.pdf',
