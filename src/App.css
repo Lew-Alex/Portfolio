@@ -112,6 +112,7 @@ main {
 }
 
 .navbar-inner {
+  position: relative;
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 24px;
@@ -168,7 +169,9 @@ main {
     top: 64px;
     left: 0;
     right: 0;
+    justify-self: stretch;
     background: var(--bg);
+    box-shadow: var(--shadow);
     border-bottom: 1px solid var(--border);
     flex-direction: column;
     gap: 0;
