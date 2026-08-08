@@ -26,6 +26,11 @@ export default function Hero() {
             <a className="button button-secondary" href="#contact">
               Get in Touch
             </a>
+            {profile.resumeUrl && (
+              <a className="button button-secondary" href={profile.resumeUrl} target="_blank" rel="noreferrer">
+                Resume
+              </a>
+            )}
           </div>
 
           <div className="hero-socials">
