@@ -8,7 +8,7 @@
 
 export const profile = {
   name: 'Alex Lewandowski',
-  role: 'Incoming Mechatronics Student @ University of Waterloo',
+  role: 'Mechatronics Student @ University of Waterloo',
   tagline: 'Seeking a Winter 2027 internship.',
   location: 'City, State',
   email: 'alexlewandowski08@gmail.com',
@@ -56,7 +56,7 @@ export const experience = [
         awards: [
           'Think Award (2024 VEX Worlds)',
           '8th of 20,000+ teams in Autonomous Skills at Worlds',
-          'Design Award (2025 Ontario Provincials)',
+          'Design Award (2024 Ontario Provincials)',
         ],
         bullets: [
           "Served as main programmer and a core mechanical designer, owning the robot's codebase and contributing to key chassis and subsystem design decisions.",
