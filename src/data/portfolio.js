@@ -117,7 +117,7 @@ export const projects = [
       "The field map and particle filter behavior were built and tested in Python before porting the logic to C++ on the ESP32. The chassis and mounting hardware were designed in CAD and 3D printed, keeping the electronics, motors, and sensors compact enough to meet the competition's size limits. Testing involved running the particle filter in simulation first, then validating it on hardware with real sensor noise, tuning the resampling and weighting steps until the estimated position matched the robot's actual path around the field.",
     ],
     highlights: [
-      'Wrote a BNO085 IMU driver from scratch over I2C, parsing SHTP packets and decoding quaternion rotation vectors into a heading angle.',
+      'Used the Adafruit BNO08x library to read orientation over I2C, converting quaternion rotation vectors into a continuous heading angle and relaying it over a custom COBS-framed serial link between the Teensy and ESP32.',
       'Built a Monte Carlo particle filter for localization, fusing wheel odometry, IMU heading, and two color sensors reading the floor against a mapped field image.',
       'Prototyped the particle filter and field map in Python, visualizing particle convergence before porting the logic to C++ on the ESP32.',
       "Split the robot's compute between an ESP32 for sensing and localization and a Teensy 4.1 for motor control.",
