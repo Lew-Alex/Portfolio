@@ -113,14 +113,14 @@ export const projects = [
     title: 'WRO Robot',
     description: 'Autonomous robot built for the World Robot Olympiad.',
     details: [
-      "Built for the World Robot Olympiad RoboMission challenge, this robot runs on an ESP32 and Teensy 4.1 working together, with the ESP32 handling sensor fusion and localization and the Teensy running motor control. A BNO085 nine axis IMU reads orientation over I2C, decoding rotation vector quaternions into a heading angle used for both driving and localization. Position tracking runs on a Monte Carlo particle filter, combining wheel odometry and IMU heading with two downward facing color sensors that read the floor against a pre mapped grayscale image of the competition field, correcting drift as the robot moves. A camera module was also integrated for vision based sensing of field elements.",
+      "Built for the World Robot Olympiad RoboMission challenge, this robot runs on an ESP32 and Teensy 4.1 working together, with the ESP32 handling sensor fusion, localization, and motor control, while a dedicated Teensy 4.1 reads a BNO085 nine axis IMU over I2C and relays a continuous heading angle to the ESP32 over a custom serial link. Position tracking runs on a Monte Carlo particle filter, combining wheel odometry and IMU heading with two downward facing color sensors that read the floor against a pre mapped grayscale image of the competition field, correcting drift as the robot moves. A camera module was also integrated for vision based sensing of field elements.",
       "The field map and particle filter behavior were built and tested in Python before porting the logic to C++ on the ESP32. The chassis and mounting hardware were designed in CAD and 3D printed, keeping the electronics, motors, and sensors compact enough to meet the competition's size limits. Testing involved running the particle filter in simulation first, then validating it on hardware with real sensor noise, tuning the resampling and weighting steps until the estimated position matched the robot's actual path around the field.",
     ],
     highlights: [
       'Used the Adafruit BNO08x library to read orientation over I2C, converting quaternion rotation vectors into a continuous heading angle and relaying it over a custom COBS-framed serial link between the Teensy and ESP32.',
       'Built a Monte Carlo particle filter for localization, fusing wheel odometry, IMU heading, and two color sensors reading the floor against a mapped field image.',
       'Prototyped the particle filter and field map in Python, visualizing particle convergence before porting the logic to C++ on the ESP32.',
-      "Split the robot's compute between an ESP32 for sensing and localization and a Teensy 4.1 for motor control.",
+      "Split the robot's compute between an ESP32 running sensor fusion, localization, and motor control, and a Teensy 4.1 dedicated to reading the IMU and relaying heading over serial.",
       'Integrated a camera module for vision based detection of field elements.',
       "Designed and 3D printed the chassis in CAD to fit within the competition's size limit.",
     ],
