@@ -12,10 +12,7 @@ export default function Hero() {
     <section id="top" className="hero">
       <div className="hero-inner">
         <div className="hero-content">
-          <span className="hero-status">
-            <span className="hero-status-dot" aria-hidden="true" />
-            {profile.tagline}
-          </span>
+          <span className="hero-status">{profile.tagline}</span>
           <h1>{profile.name}</h1>
           <p className="hero-role">{profile.role}</p>
 
