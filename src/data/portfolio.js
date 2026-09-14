@@ -55,7 +55,7 @@ export const experience = [
         repoUrl: 'https://github.com/Lew-Alex/5225A-2023-2024',
         awards: [
           'Think Award (2024 VEX Worlds)',
-          '8th of 20,000+ teams in Autonomous Skills at Worlds',
+          '8th of 10,000+ teams in Autonomous Skills at Worlds',
           'Design Award (2024 Ontario Provincials)',
         ],
         bullets: [
@@ -86,7 +86,7 @@ export const experience = [
         awards: [
           'Design Award (2025 VEX Worlds)',
           'Excellence Award (2025 Ontario Provincials, First Place)',
-          '4th of 20,000+ teams in Autonomous Skills at Worlds',
+          '4th of 10,000+ teams in Autonomous Skills at Worlds',
         ],
         bullets: [
           "Served as head programmer, designer, and strategist for one of the team's most important seasons, leading the robot codebase, contributing to mechanical design decisions, and shaping match strategy.",

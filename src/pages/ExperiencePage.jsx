@@ -5,7 +5,7 @@ import MediaCarousel from '../components/MediaCarousel'
 import { experience } from '../data/portfolio'
 
 // Awards sometimes include a leading placement line like
-// "4th of 20,000+ teams in Autonomous Skills at Worlds" — pull that out
+// "4th of 10,000+ teams in Autonomous Skills at Worlds" — pull that out
 // so it can headline the record as a single stat instead of just
 // another line buried in the list.
 const RANK_RE = /^(\d+(?:st|nd|rd|th)) of ([\d,]+\+?) teams(?: in (.+))?$/i
