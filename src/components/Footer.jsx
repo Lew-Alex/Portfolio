@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <p>
-        © {new Date().getFullYear()} {profile.name}. Built with React + Vite.
+        © {new Date().getFullYear()} {profile.name}
       </p>
       <Link to="/#top" className="icon-button" aria-label="Back to top">
         <Icon name="arrowUp" size={16} />
