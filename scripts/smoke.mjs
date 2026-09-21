@@ -217,8 +217,14 @@ for (const vp of VIEWPORTS) {
   if (after.attr !== 'dark') problems.push(`toggle did not set data-theme=dark (got ${after.attr})`)
   if (after.bg === before.bg) problems.push('background did not change on toggle')
   if (after.chrome !== '#0c0e11') problems.push(`theme-color meta not updated for dark (got ${after.chrome})`)
-  if (themeCheck.afterSecondClick?.attr !== 'light')
-    problems.push(`second toggle did not return to light (got ${themeCheck.afterSecondClick?.attr})`)
+  // Back to white: either data-theme=light or no attribute at all, both are light.
+  const back = themeCheck.afterSecondClick?.attr
+  if (back !== 'light' && back !== '(unset)')
+    problems.push(`second toggle did not return to light (got ${back})`)
+  // White is the default for everyone, so the choice must not be remembered:
+  // a stored "dark" is what made the site open dark for a returning visitor.
+  if (after.stored !== '(none)')
+    problems.push(`theme choice should not be persisted (stored ${after.stored})`)
   problems.forEach((p) => {
     failures++
     console.log(`FAIL  theme: ${p}`)

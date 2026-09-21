@@ -1,46 +1,39 @@
 import { useCallback, useEffect, useState } from 'react'
 
-const STORAGE_KEY = 'theme'
-
-function readSavedTheme() {
-  if (typeof window === 'undefined') return null
-  try {
-    const saved = window.localStorage.getItem(STORAGE_KEY)
-    if (saved === 'light' || saved === 'dark') return saved
-  } catch {
-    // localStorage unavailable (private mode) — fall through to the default
-  }
-  return null
-}
-
-// The site opens white for everyone, deliberately: the operating system's
-// dark-mode preference is NOT consulted. Dark applies only once a visitor
-// flips the toggle, and that choice is remembered.
+// The site opens white for everyone, always.
+//
+// Two things are deliberately ignored here:
+//   - the operating system's dark-mode preference, and
+//   - any dark choice stored from a previous visit.
+//
+// The second one matters: a remembered "dark" made the site open dark for a
+// returning visitor even though white is meant to be the default, which reads
+// as the site being broken rather than as a preference being honoured. The
+// toggle still flips the theme for as long as you are on the page; it just does
+// not survive a reload.
 export default function useTheme() {
-  const [choice, setChoice] = useState(readSavedTheme)
-
-  const theme = choice ?? 'light'
+  const [theme, setTheme] = useState('light')
 
   useEffect(() => {
     const root = document.documentElement
-    if (choice) root.dataset.theme = choice
+    if (theme === 'dark') root.dataset.theme = 'dark'
     else delete root.dataset.theme
 
     // Keep the browser's own chrome (address bar on mobile) in step.
     const meta = document.querySelector('meta[name="theme-color"]')
     if (meta) meta.setAttribute('content', theme === 'dark' ? '#0c0e11' : '#f8f7f4')
 
+    // Clear any choice an earlier build stored, so nothing resurrects dark mode.
     try {
-      if (choice) window.localStorage.setItem(STORAGE_KEY, choice)
-      else window.localStorage.removeItem(STORAGE_KEY)
+      window.localStorage.removeItem('theme')
     } catch {
-      // ignore write failures
+      // ignore
     }
-  }, [choice, theme])
+  }, [theme])
 
   const toggleTheme = useCallback(() => {
-    setChoice((prev) => (prev === 'dark' ? 'light' : 'dark'))
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
   }, [])
 
-  return { theme, toggleTheme, themeChoice: choice }
+  return { theme, toggleTheme, themeChoice: theme === 'light' ? null : 'dark' }
 }
