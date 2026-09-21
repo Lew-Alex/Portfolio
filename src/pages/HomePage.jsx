@@ -13,7 +13,8 @@ export default function HomePage() {
     if (location.hash) {
       const el = document.querySelector(location.hash)
       if (el) {
-        requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth' }))
+        // Let the browser paint first so the scroll lands in the right place.
+        requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }))
         return
       }
     }
@@ -21,12 +22,12 @@ export default function HomePage() {
   }, [location.pathname, location.hash])
 
   return (
-    <main>
+    <>
       <Hero />
       <About />
       <Experience />
       <Projects />
       <Contact />
-    </main>
+    </>
   )
 }

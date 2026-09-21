@@ -1,50 +1,54 @@
 import { Link } from 'react-router'
 import Icon from './Icon'
+import { Reveal, SectionHead } from './ui'
 import { projects } from '../data/portfolio'
-
-// Fixed per-card tilt so photos read as pinned up rather than a
-// perfectly uniform grid — deterministic, not random, so it's stable
-// across re-renders instead of jittering.
-const TILTS = [-3, 2, -2, 3]
 
 export default function Projects() {
   return (
-    <section id="projects" className="section">
-      <h2 className="section-title">Projects</h2>
+    <section className="section" id="projects">
+      <div className="wrap">
+        <SectionHead
+          index="03"
+          title="Projects"
+          lead="Robots, mechanisms and control systems I designed, built and debugged."
+        />
 
-      <div className="pin-grid">
-        {projects.map((project, i) => (
-          <Link key={project.title} to={`/projects/${project.slug}`} className="pin-card">
-            <div className="pin-photo" style={{ '--tilt': `${TILTS[i % TILTS.length]}deg` }}>
-              <span className="pin-tape" aria-hidden="true" />
-              <div className="pin-image" aria-hidden="true">
-                {project.image ? (
-                  <img src={project.image} alt="" />
-                ) : (
-                  <span>{project.title.slice(0, 1)}</span>
-                )}
-              </div>
-              <span className="pin-index">{`0${i + 1}`}</span>
-            </div>
+        <div className="project-index">
+          {projects.map((project, i) => (
+            <Reveal key={project.slug}>
+              <Link className="project-row" to={`/projects/${project.slug}`}>
+                <span className="eyebrow project-row-num num">{String(i + 1).padStart(2, '0')}</span>
 
-            <div className="pin-body">
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
+                <div className="project-row-thumb">
+                  {project.image && <img src={project.image} alt="" loading="lazy" decoding="async" />}
+                </div>
 
-              <div className="tag-row">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="tag">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+                <div className="project-row-body">
+                  <div className="project-row-top">
+                    <h3 className="project-row-title">{project.title}</h3>
+                    {project.year && <span className="eyebrow num">{project.year}</span>}
+                  </div>
 
-              <span className="expand-hint">
-                {project.cadUrl ? 'View Details And CAD' : 'View details'} <Icon name="chevronRight" size={14} />
-              </span>
-            </div>
-          </Link>
-        ))}
+                  <p className="project-row-desc">{project.description}</p>
+
+                  {project.tags?.length > 0 && (
+                    <div className="tag-row">
+                      {project.tags.map((tag) => (
+                        <span className="tag" key={tag}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <span className="project-row-arrow" aria-hidden="true">
+                  <Icon name="chevronRight" size={16} />
+                </span>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   )

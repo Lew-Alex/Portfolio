@@ -3,20 +3,25 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
 import ProjectPage from './pages/ProjectPage'
-import ExperiencePage from './pages/ExperiencePage'
+import SeasonPage from './pages/SeasonPage'
 import NotFoundPage from './pages/NotFoundPage'
 import './App.css'
 
 function App() {
   return (
     <BrowserRouter>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/projects/:slug" element={<ProjectPage />} />
-        <Route path="/experience" element={<ExperiencePage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <main id="main">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects/:slug" element={<ProjectPage />} />
+          <Route path="/experience/:slug" element={<SeasonPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
       <Footer />
     </BrowserRouter>
   )

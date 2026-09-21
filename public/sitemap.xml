@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://alexlewandowski.ca/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://alexlewandowski.ca/projects/wro-robot</loc>
+  </url>
+  <url>
+    <loc>https://alexlewandowski.ca/projects/differential-swerve-drive</loc>
+  </url>
+  <url>
+    <loc>https://alexlewandowski.ca/projects/robotic-hand</loc>
+  </url>
+  <url>
+    <loc>https://alexlewandowski.ca/projects/sailing-compass</loc>
+  </url>
+  <url>
+    <loc>https://alexlewandowski.ca/experience/high-stakes</loc>
+  </url>
+  <url>
+    <loc>https://alexlewandowski.ca/experience/over-under</loc>
+  </url>
+  <url>
+    <loc>https://alexlewandowski.ca/experience/push-back</loc>
+  </url>
+</urlset>

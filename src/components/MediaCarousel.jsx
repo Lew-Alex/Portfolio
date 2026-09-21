@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Icon from './Icon'
 
-export default function MediaCarousel({ items, emptyLabel = 'Add photos or videos' }) {
+export default function MediaCarousel({ items, emptyLabel = 'Add photos or videos', fit = 'contain' }) {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
@@ -24,11 +24,11 @@ export default function MediaCarousel({ items, emptyLabel = 'Add photos or video
 
   return (
     <div className="media-carousel">
-      <div className="media-carousel-frame">
+      <div className={`media-carousel-frame${fit === 'cover' ? ' is-cover' : ''}`}>
         {item.type === 'video' ? (
-          <video src={item.src} controls />
+          <video src={item.src} controls preload="metadata" playsInline />
         ) : (
-          <img src={item.src} alt={item.caption || ''} />
+          <img src={item.src} alt={item.caption || ''} width={item.w} height={item.h} />
         )}
 
         {items.length > 1 && (
