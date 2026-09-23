@@ -114,7 +114,7 @@ export const skills = {
     'Design iteration & testing',
   ],
   Embedded: ['ESP32', 'Teensy 4.1', 'Raspberry Pi Pico (bare-metal C)', 'VEX V5', 'I2C & custom serial links'],
-  Software: ['C++', 'Python', 'JavaScript', 'PID & feedforward control', 'State machines', 'Odometry / sensor fusion'],
+  Software: ['C++', 'Python', 'JavaScript', 'ROS2', 'PID & feedforward control', 'State machines', 'Odometry / sensor fusion'],
 }
 
 export const experience = [
