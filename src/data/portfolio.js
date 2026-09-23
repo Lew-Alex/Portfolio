@@ -275,11 +275,30 @@ export const experience = [
               {
                 when: 'Nov 2024',
                 items: [
-                  // "Full" and "Part of" against the clip lengths: 12.6s is a whole
-                  // autonomous period, 3.2s is a fragment. Swap the two captions if
-                  // that reading is wrong.
                   { type: 'video', src: '/videos/high-stakes-10.mp4', w: 1152, h: 648, caption: 'Full Autonomous Routine' },
-                  { type: 'video', src: '/videos/high-stakes-11.mp4', w: 854, h: 480, caption: 'Part of Autonomous Skills' },
+                  // Replaced the earlier second clip with IMG_7305.MOV (16s, 1080p).
+                  // Kept the caption that was on that slot; change it if it no longer fits.
+                  { type: 'video', src: '/videos/high-stakes-12.mp4', w: 1152, h: 648, caption: 'Part of Autonomous Skills' },
+                ],
+              },
+              {
+                when: 'Dec 2024',
+                note: 'Competition on December 14th',
+                items: [
+                  { type: 'video', src: '/videos/high-stakes-13.mp4', w: 1152, h: 648, caption: '62 Point skills (World Record at the time)' },
+                ],
+              },
+              {
+                when: 'Jan 2025',
+                items: [
+                  { src: '/images/high-stakes/hs-20.jpg', caption: 'Start of rebuild' },
+                ],
+              },
+              {
+                when: 'Feb 2025',
+                items: [
+                  { type: 'video', src: '/videos/high-stakes-14.mp4', w: 1080, h: 1920, caption: 'Tier 3 High Hang Winch PTO Design' },
+                  { src: '/images/high-stakes/hs-21.jpg', caption: 'Getting ready for provincials' },
                 ],
               },
             ],

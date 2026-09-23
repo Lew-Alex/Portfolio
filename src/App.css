@@ -1430,6 +1430,17 @@
   color: var(--ink);
 }
 
+/* A group's note, e.g. a competition date, when there is no media for it. */
+.timeline-note {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+/* No media in the group: the note sits on the month line, so drop the gap below. */
+.timeline-group-head.is-empty {
+  margin-bottom: 0;
+}
+
 /* A fixed three-up at desktop: every frame is the same size and the same 4:3
    format, so the month rows read as a grid. Anything taller is centre-cropped.
    Two-up below 900px, single column on phones. */

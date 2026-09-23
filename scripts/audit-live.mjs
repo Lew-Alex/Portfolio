@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer-core'
-import { readFileSync, readdirSync } from 'node:fs'
+import { readdirSync } from 'node:fs'
 
 const b = await puppeteer.launch({
   executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',

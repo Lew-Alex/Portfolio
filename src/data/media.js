@@ -47,6 +47,8 @@ export const highStakesPhotos = [
   { type: 'image', src: '/images/high-stakes/hs-17.jpg', w: 1350, h: 1800 },
   { type: 'image', src: '/images/high-stakes/hs-18.jpg', w: 1350, h: 1800 },
   { type: 'image', src: '/images/high-stakes/hs-19.jpg', w: 1800, h: 1350 },
+  { type: 'image', src: '/images/high-stakes/hs-20.jpg', w: 1800, h: 1350 },
+  { type: 'image', src: '/images/high-stakes/hs-21.jpg', w: 1800, h: 1350 },
 ]
 
 export const highStakesCad = [

@@ -377,10 +377,13 @@ export function Block({ section, index, wide = false }) {
           <ol className="timeline">
             {section.groups?.map((group, gi) => (
               <li className="timeline-group" key={gi}>
-                <header className="timeline-group-head">
+                <header className={`timeline-group-head${group.items?.length ? '' : ' is-empty'}`}>
                   <span className="timeline-when num">{group.when}</span>
+                  {/* A group can carry a note instead of media, e.g. a competition date. */}
+                  {group.note && <span className="timeline-note">{group.note}</span>}
                 </header>
-                <div className="timeline-items">
+                {group.items?.length > 0 && (
+                  <div className="timeline-items">
                   {group.items?.map((item, i) => (
                     <figure className="timeline-item" key={i}>
                       <div className="figure-img">
@@ -407,7 +410,8 @@ export function Block({ section, index, wide = false }) {
                       {item.caption && <figcaption className="timeline-caption">{item.caption}</figcaption>}
                     </figure>
                   ))}
-                </div>
+                  </div>
+                )}
               </li>
             ))}
           </ol>
