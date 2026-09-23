@@ -200,7 +200,7 @@ export const experience = [
             type: 'prose',
             title: 'Overview',
             paragraphs: [
-              "High Stakes was the season the team stopped copying and started designing. As head programmer, designer and strategist I owned the robot's codebase, but the work that mattered most happened between the CAD and the field: deciding which mechanisms were worth the weight, and which ones would break under a Worlds schedule.",
+              "As head programmer, designer and strategist I owned the robot's codebase, but the work that mattered most happened between the CAD and the field: deciding which mechanisms were worth the weight, and which ones would break under a Worlds schedule.",
               'The robot hung four feet in the air as an endgame, on a base almost nobody else hung with: an X-drive with a power take-off that reused the drive motors to lift the robot.',
             ],
             items: [
