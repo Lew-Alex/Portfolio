@@ -19,16 +19,16 @@ export default function Experience() {
         <SectionHead
           index="02"
           title="Experience"
-          lead="Four seasons on VEX Robotics Team 5225A: code, mechanisms and match strategy, season by season."
+          lead="Humanoid perception and SLAM at WATonomous, alongside four seasons of competition robotics with VEX Team 5225A."
         />
 
         <ol className="timeline">
           {experience.map((job) => {
-            const seasons = seasonsLatestFirst(job.seasons)
+            const seasons = job.details ? [job.details, ...seasonsLatestFirst(job.seasons)] : seasonsLatestFirst(job.seasons)
 
             return (
               <Reveal as="li" className="job" key={`${job.company}-${job.role}`}>
-                <div className="job-grid">
+                <div className={`job-grid${job.image ? '' : ' job-grid-text'}`}>
                   <div>
                     <div className="job-head">
                       <h3 className="job-role">
@@ -80,10 +80,12 @@ export default function Experience() {
                 {seasons.length > 0 && (
                   <div className="season-index">
                     {seasons.map((season) => (
-                      <Link className="season-link" to={`/experience/${season.slug}`} key={season.slug}>
-                        <div className="season-thumb" aria-hidden="true">
-                          {season.image ? <img src={season.image} alt="" loading="lazy" /> : null}
-                        </div>
+                      <Link className={`season-link${season.image ? '' : ' season-link-text'}`} to={`/experience/${season.slug}`} key={season.slug}>
+                        {season.image && (
+                          <div className="season-thumb" aria-hidden="true">
+                            <img src={season.image} alt="" loading="lazy" />
+                          </div>
+                        )}
 
                         <div className="season-body">
                           <h4>

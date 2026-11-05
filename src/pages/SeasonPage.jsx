@@ -3,9 +3,12 @@ import { useParams } from 'react-router'
 import { Block, Crumb, HeroBand, MetaLine, BestBadge, Pager, TechList } from '../components/ui'
 import { experience } from '../data/portfolio'
 
-// Flatten every season so we can walk prev/next across the whole history.
+// Collect experience detail pages and seasons for shared navigation.
 function allSeasons() {
-  return experience.flatMap((job) => (job.seasons ?? []).map((season) => ({ job, season })))
+  return experience.flatMap((job) => [
+    ...(job.details ? [{ job, season: job.details }] : []),
+    ...(job.seasons ?? []).map((season) => ({ job, season })),
+  ])
 }
 
 export default function SeasonPage() {

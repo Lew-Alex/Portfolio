@@ -119,6 +119,68 @@ export const skills = {
 
 export const experience = [
   {
+    role: 'Humanoid Perception Team Member',
+    company: 'WATonomous, University of Waterloo',
+    companyUrl: 'https://github.com/WATonomous/pioneer_humanoid',
+    dates: 'Sep 2026 – Present',
+    location: 'Waterloo, ON',
+    tags: ['ROS 2', 'Python', 'SLAM', 'GTSAM / iSAM2', 'RTAB-Map', 'EVO', 'Docker'],
+    bullets: [
+      'Developing Pioneer’s SLAM backend with GTSAM and iSAM2, optimizing keyframe poses using visual odometry and loop-closure constraints.',
+      'Built a repeatable RTAB-Map and EVO evaluation workflow for TUM RGB-D datasets and Intel RealSense D455 recordings.',
+      'Created replay, trajectory-export, and ROS bag conversion tools, and tested backend robustness against deliberately incorrect loop closures.',
+    ],
+    details: {
+      slug: 'watonomous',
+      label: 'Pioneer · Humanoid perception & SLAM',
+      year: '2026–Present',
+      description: 'Pose-graph optimization, loop-closure experiments, and a repeatable SLAM evaluation pipeline.',
+      repoUrl: 'https://github.com/WATonomous/pioneer_humanoid',
+      sections: [
+      {
+        type: 'prose',
+        title: 'Incremental pose-graph backend',
+        paragraphs: [
+          'Working on the backend of Pioneer’s SLAM pipeline using GTSAM and iSAM2. The frontend supplies keyframes and relative visual-odometry measurements; the backend represents keyframe poses as graph variables and adds relative measurements as between factors.',
+          'A prior on the first keyframe anchors the coordinate system. Loop closures add constraints between older and newer keyframes, allowing the optimizer to update the trajectory as new information arrives. The implementation uses measurement covariances and robust loop-closure noise models, with Huber and Cauchy kernels available.',
+        ],
+      },
+      {
+        type: 'prose',
+        title: 'Replay and loop-closure experiments',
+        paragraphs: [
+          'Built adapters to load frontend keyframe and loop-closure outputs, replay them through the backend, and export optimized poses for trajectory comparison. Tested with real visual-odometry outputs and deliberately incorrect loop translations of 0.5 m, 10 cm, and 3 cm to examine how the Huber kernel downweights inconsistent constraints.',
+          'Compared frontend and backend trajectories using EVO absolute pose error and position plots. These experiments measure how much a bad loop distorts the output relative to the frontend; they do not establish absolute localization accuracy against independent ground truth.',
+        ],
+      },
+      {
+        type: 'prose',
+        title: 'SLAM evaluation and benchmarking',
+        paragraphs: [
+          'Created a repeatable workflow to process ROS bags, run RTAB-Map, export trajectories, and evaluate results with EVO absolute and relative pose error. Used trajectory plots to inspect drift and failure cases on TUM RGB-D datasets.',
+          'For D455 recordings without external ground truth, used loop-closure error as a consistency check. Investigated COLMAP as an offline pseudo-ground-truth source, but found orientation limitations that made it unsuitable to treat as true ground truth; RGB-D and visual-inertial alternatives remain under investigation.',
+        ],
+      },
+      {
+        type: 'prose',
+        title: 'Datasets, recording, and ROS tooling',
+        paragraphs: [
+          'Developed Dockerized tools for ROS 1 to ROS 2 bag conversion, dataset configuration, topic and frame remapping, trajectory export, and visualization. Worked with TUM RGB-D datasets and Intel RealSense D455 recordings, including camera and IMU data.',
+          'Diagnosed TF connectivity, timestamp synchronization, depth alignment, topic mismatches, and visual-odometry failures across recordings and ROS 2 distributions. Built tooling for D455 data recording to support repeatable experiments.',
+        ],
+      },
+      {
+        type: 'prose',
+        title: 'Navigation foundations',
+        paragraphs: [
+          'Implemented a ROS 2 navigation stack for a simulated differential-drive robot. LiDAR-based costmaps represent obstacles, A-star plans a route through the map, and Pure Pursuit follows the path.',
+        ],
+      },
+
+      ],
+    },
+  },
+  {
     role: 'Head Programmer, Designer & Strategist',
     company: 'VEX Robotics Team 5225A, The PiLons',
     companyUrl: '',

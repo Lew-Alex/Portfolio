@@ -567,6 +567,10 @@
   align-items: start;
 }
 
+.job-grid-text {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .job-head {
   display: flex;
   align-items: baseline;
@@ -1886,3 +1890,9 @@
     transform: none;
   }
 }
+
+/* Detail links without a photograph keep the same season-card treatment. */
+.season-link-text {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
