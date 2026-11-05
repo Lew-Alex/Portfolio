@@ -121,6 +121,8 @@ export const experience = [
   {
     role: 'Humanoid Perception Team Member',
     company: 'WATonomous, University of Waterloo',
+    image: '/images/pioneer-humanoid.webp',
+    imageAlt: 'Pioneer humanoid arm assembly on the WATonomous workbench.',
     companyUrl: 'https://github.com/WATonomous/pioneer_humanoid',
     dates: 'Sep 2026 – Present',
     location: 'Waterloo, ON',
@@ -161,6 +163,11 @@ export const experience = [
       {
         type: 'prose',
         title: 'SLAM evaluation and benchmarking',
+        sideImage: {
+          src: '/images/watonomous-slam-map.png',
+          alt: 'SLAM point-cloud reconstruction with a red estimated trajectory.',
+          caption: 'Point-cloud reconstruction and estimated trajectory from a SLAM run.',
+        },
         paragraphs: [
           'Created a repeatable workflow to process ROS bags, run RTAB-Map, export trajectories, and evaluate results with EVO absolute and relative pose error. Used trajectory plots to inspect drift and failure cases on TUM RGB-D datasets.',
           'For D455 recordings without external ground truth, used loop-closure error as a consistency check. Investigated COLMAP as an offline pseudo-ground-truth source, but found orientation limitations that made it unsuitable to treat as true ground truth; RGB-D and visual-inertial alternatives remain under investigation.',

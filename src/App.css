@@ -647,7 +647,7 @@
 
 .job-thumb {
   margin: 0;
-  border: 1px solid var(--line);
+  border: 2px solid var(--ink-3);
   background: var(--paper-2);
   aspect-ratio: 4 / 3;
   overflow: hidden;
@@ -1901,7 +1901,8 @@
   display: flow-root;
 }
 
-.block-body-media > .block-video {
+.block-body-media > .block-video,
+.block-body-media > .block-side-image {
   float: right;
   width: calc(50% - clamp(0.75rem, 1.5vw, 1.5rem));
   margin: 0 0 1.5rem clamp(1.5rem, 3vw, 3rem);
@@ -1912,7 +1913,8 @@
 
 @media (max-width: 800px) {
   .block-body-media { display: flex; flex-direction: column; gap: 1.5rem; }
-  .block-body-media > .block-video { float: none; width: 100%; margin: 0; order: 1; }
+  .block-body-media > .block-video,
+.block-body-media > .block-side-image { float: none; width: 100%; margin: 0; order: 1; }
 }
 
 .prose-figures {
@@ -1928,3 +1930,5 @@
 
 .callout > p + p,
 .callout > .simple-list { margin-top: 1rem; }
+
+.block-side-image img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }

@@ -72,7 +72,7 @@ export default function Experience() {
 
                   {job.image && (
                     <figure className="job-thumb">
-                      <img src={job.image} alt="" loading="lazy" decoding="async" />
+                      <img src={job.image} alt={job.imageAlt || ''} loading="lazy" decoding="async" />
                     </figure>
                   )}
                 </div>

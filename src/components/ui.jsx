@@ -297,7 +297,16 @@ export function Block({ section, index, wide = false }) {
 
       {section.intro && <p className="block-intro">{section.intro}</p>}
 
-      <div className={`block-body${section.type === 'prose' && section.video ? ' block-body-media' : ''}`}>
+      <div className={`block-body${section.type === 'prose' && (section.video || section.sideImage) ? ' block-body-media' : ''}`}>
+        {section.type === 'prose' && section.sideImage && (
+          <figure className="block-side-image">
+            <a href={section.sideImage.src} target="_blank" rel="noreferrer">
+              <img src={section.sideImage.src} alt={section.sideImage.alt || ''} loading="lazy" decoding="async" />
+            </a>
+            {section.sideImage.caption && <figcaption className="figcaption">{section.sideImage.caption}</figcaption>}
+          </figure>
+        )}
+
         {section.type === 'prose' && section.video && (
           <figure className="block-video">
             <video
