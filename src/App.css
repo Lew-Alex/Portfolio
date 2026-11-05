@@ -1914,3 +1914,17 @@
   .block-body-media { display: flex; flex-direction: column; gap: 1.5rem; }
   .block-body-media > .block-video { float: none; width: 100%; margin: 0; order: 1; }
 }
+
+.prose-figures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+.prose-figures img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+@media (max-width: 800px) {
+  .prose-figures { grid-template-columns: minmax(0, 1fr); }
+}
+
+.callout > p + p,
+.callout > .simple-list { margin-top: 1rem; }

@@ -148,9 +148,14 @@ export const experience = [
       {
         type: 'prose',
         title: 'Replay and loop-closure experiments',
+        wide: true,
         paragraphs: [
           'Built adapters to load frontend keyframe and loop-closure outputs, replay them through the backend, and export optimized poses for trajectory comparison. Tested with real visual-odometry outputs and deliberately incorrect loop translations of 0.5 m, 10 cm, and 3 cm to examine how the Huber kernel downweights inconsistent constraints.',
           'Compared frontend and backend trajectories using EVO absolute pose error and position plots. These experiments measure how much a bad loop distorts the output relative to the frontend; they do not establish absolute localization accuracy against independent ground truth.',
+        ],
+        images: [
+          { src: '/images/loop_robustness_translation.png', caption: 'Translation robustness: ATE translation RMSE versus false loop translation error, comparing Gaussian, Huber, and Cauchy noise models.' },
+          { src: '/images/loop_robustness_rotation.png', caption: 'Rotation robustness: ATE rotation RMSE versus false loop rotation error, comparing Gaussian, Huber, and Cauchy noise models.' },
         ],
       },
       {
@@ -446,7 +451,7 @@ export const projects = [
     // does not describe a CAD view, so it is hidden. Add a line for the render.
     heroCaption: '',
     details: [
-      "Built for the World Robot Olympiad RoboMission challenge, this robot runs on an ESP32 and Teensy 4.1 working together, with the ESP32 handling sensor fusion, localization, and motor control, while a dedicated Teensy 4.1 reads a BNO085 nine axis IMU over I2C and relays a continuous heading angle to the ESP32 over a custom serial link. Position tracking runs on a Monte Carlo particle filter, combining wheel odometry and IMU heading with two downward facing color sensors that read the floor against a pre mapped grayscale image of the competition field, correcting drift as the robot moves. A camera module was also integrated for vision based sensing of field elements.",
+      "Built for the World Robot Olympiad RoboMission challenge, this robot runs on an ESP32 and Teensy 4.1 working together, with the ESP32 handling sensing, orientation, and higher-level processing while the Teensy 4.1 handles motor control and low-level execution. The boards exchange data over a custom UART serial link. Position tracking runs on a Monte Carlo particle filter, combining wheel odometry and IMU heading with two downward facing color sensors that read the floor against a pre mapped grayscale image of the competition field, correcting drift as the robot moves. A camera module was also integrated for vision based sensing of field elements.",
       "The field map and particle filter behavior were built and tested in Python before porting the logic to C++ on the ESP32. The chassis and mounting hardware were designed in CAD and 3D printed, keeping the electronics, motors, and sensors compact enough to meet the competition's size limits. Testing involved running the particle filter in simulation first, then validating it on hardware with real sensor noise, tuning the resampling and weighting steps until the estimated position matched the robot's actual path around the field.",
     ],
     highlights: [
@@ -505,7 +510,7 @@ export const projects = [
         type: 'prose',
         title: 'Overview',
         paragraphs: [
-          'Built for the World Robot Olympiad RoboMission challenge, this robot runs on an ESP32 and Teensy 4.1 working together, with the ESP32 handling sensor fusion, localization, and motor control, while a dedicated Teensy 4.1 reads a BNO085 nine axis IMU over I2C and relays a continuous heading angle to the ESP32 over a custom serial link.',
+          'Built for the World Robot Olympiad RoboMission challenge, this robot runs on an ESP32 and Teensy 4.1 working together, with the ESP32 handling sensing, orientation, and higher-level processing while the Teensy 4.1 handles motor control and low-level execution. The boards exchange data over a custom UART serial link.',
           'The field map and particle filter behavior were built and tested in Python before porting the logic to C++ on the ESP32, then validated on hardware with real sensor noise until the estimated position matched the robot’s actual path around the field.',
         ],
       },
@@ -540,7 +545,22 @@ export const projects = [
       {
         type: 'callout',
         title: 'Software',
-        text: 'The particle filter and field map were prototyped in Python (visualizing particle convergence frame by frame) before the same logic was ported to C++ on the ESP32.',
+        paragraphs: [
+          'The WRO robot used a split embedded architecture, with an ESP32 handling sensing, orientation, and higher-level processing while a Teensy 4.1 handled motor control and low-level execution. I wrote C++ firmware using PlatformIO, Arduino libraries, and ESP-IDF, including FreeRTOS-based timing on the ESP32. The firmware was organized around real-time sensor updates, motor commands, encoder feedback, and autonomous routines.',
+          'I worked directly with hardware communication and data movement between embedded systems. This included configuring I2C devices such as the BNO08x IMU and VL53L0X time-of-flight sensors, implementing UART communication, and serializing sensor data into compact binary packets with COBS framing. I also built and tested sensor drivers, calibration routines, encoder tracking, PWM motor control, and PID loops while paying close attention to timing, packet structure, and reliable real-time updates.',
+          'The software combined wheel odometry, IMU heading, and distance measurements to estimate the robot’s position during autonomous runs. I implemented incremental pose updates, gyro calibration, wall-based corrections, and a particle-filter localization prototype with a Python visualization tool for testing. I also created smaller hardware bring-up projects, including I2C scanners and standalone IMU, encoder, motor, and distance-sensor tests, to validate each subsystem before integrating it into the complete robot.',
+        ],
+        items: [
+          'C++ embedded firmware with PlatformIO, Arduino, and ESP-IDF',
+          'FreeRTOS task timing and real-time data processing on ESP32',
+          'I2C integration for IMUs and time-of-flight distance sensors',
+          'UART communication and COBS-framed binary packet serialization',
+          'Sensor calibration, hardware drivers, and subsystem bring-up',
+          'Encoder-based odometry, IMU integration, and pose estimation',
+          'PWM motor control, PID control, and autonomous motion routines',
+          'Particle-filter localization prototype with Python visualization',
+          'Testing across ESP32, Teensy 4.1, Arduino, and custom electronics',
+        ],
       },
       {
         type: 'gallery',

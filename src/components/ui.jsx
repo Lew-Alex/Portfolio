@@ -338,6 +338,19 @@ export function Block({ section, index, wide = false }) {
           </div>
         )}
 
+        {section.type === 'prose' && section.images?.length > 0 && (
+          <div className="prose-figures">
+            {section.images.map((image) => (
+              <figure className="figure" key={image.src}>
+                <a href={image.src} target="_blank" rel="noreferrer" aria-label={`Open full-size chart: ${image.caption}`}>
+                  <img src={image.src} alt={image.caption} loading="lazy" decoding="async" />
+                </a>
+                {image.caption && <figcaption className="figcaption">{image.caption}</figcaption>}
+              </figure>
+            ))}
+          </div>
+        )}
+
         {section.type === 'columns' && (
           <div className="highlight-columns">
             {section.columns?.map((col, i) => (
@@ -449,10 +462,15 @@ export function Block({ section, index, wide = false }) {
         )}
 
         {section.type === 'callout' && (
-          <p className="callout">
-            <strong>{section.title}: </strong>
-            {section.text}
-          </p>
+          <div className="callout">
+            {section.text && <p><strong>{section.title}: </strong>{section.text}</p>}
+            {section.paragraphs?.map((paragraph, i) => <p key={i}>{paragraph}</p>)}
+            {section.items?.length > 0 && (
+              <ul className="simple-list">
+                {section.items.map((item, i) => <li key={i}>{item}</li>)}
+              </ul>
+            )}
+          </div>
         )}
       </div>
     </Reveal>
