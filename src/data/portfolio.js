@@ -164,6 +164,7 @@ export const experience = [
       {
         type: 'prose',
         title: 'Datasets, recording, and ROS tooling',
+        wide: true,
         paragraphs: [
           'Developed Dockerized tools for ROS 1 to ROS 2 bag conversion, dataset configuration, topic and frame remapping, trajectory export, and visualization. Worked with TUM RGB-D datasets and Intel RealSense D455 recordings, including camera and IMU data.',
           'Diagnosed TF connectivity, timestamp synchronization, depth alignment, topic mismatches, and visual-odometry failures across recordings and ROS 2 distributions. Built tooling for D455 data recording to support repeatable experiments.',

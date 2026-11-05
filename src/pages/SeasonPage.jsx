@@ -74,7 +74,7 @@ export default function SeasonPage() {
         />
 
         {season.sections?.map((section, i) => (
-          <Block key={i} section={section} index={i} wide={i === 0} />
+          <Block key={i} section={section} index={i} wide={i === 0 || section.wide} />
         ))}
 
         <Pager
