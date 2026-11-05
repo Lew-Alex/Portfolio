@@ -1896,3 +1896,21 @@
   grid-template-columns: minmax(0, 1fr) auto;
 }
 
+/* Let prose wrap beside the demonstration, then span the width below it. */
+.block-body-media {
+  display: flow-root;
+}
+
+.block-body-media > .block-video {
+  float: right;
+  width: calc(50% - clamp(0.75rem, 1.5vw, 1.5rem));
+  margin: 0 0 1.5rem clamp(1.5rem, 3vw, 3rem);
+}
+
+.block-body-media > .prose { max-width: none; }
+.block-body-media .block-video video { display: block; }
+
+@media (max-width: 800px) {
+  .block-body-media { display: flex; flex-direction: column; gap: 1.5rem; }
+  .block-body-media > .block-video { float: none; width: 100%; margin: 0; order: 1; }
+}

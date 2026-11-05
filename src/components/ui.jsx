@@ -297,7 +297,21 @@ export function Block({ section, index, wide = false }) {
 
       {section.intro && <p className="block-intro">{section.intro}</p>}
 
-      <div className="block-body">
+      <div className={`block-body${section.type === 'prose' && section.video ? ' block-body-media' : ''}`}>
+        {section.type === 'prose' && section.video && (
+          <figure className="block-video">
+            <video
+              src={section.video.src}
+              poster={section.video.poster}
+              controls
+              playsInline
+              preload="metadata"
+              aria-label={section.video.caption || section.title}
+            />
+            {section.video.caption && <figcaption className="figcaption">{section.video.caption}</figcaption>}
+          </figure>
+        )}
+
         {section.type === 'prose' && (
           <div className="prose">
             {section.paragraphs?.map((p, i) => (

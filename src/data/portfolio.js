@@ -173,8 +173,19 @@ export const experience = [
         type: 'prose',
         title: 'Navigation foundations',
         paragraphs: [
-          'Implemented a ROS 2 navigation stack for a simulated differential-drive robot. LiDAR-based costmaps represent obstacles, A-star plans a route through the map, and Pure Pursuit follows the path.',
+          'Built a C++ navigation stack in ROS 2 for a simulated differential-drive robot as part of WATonomous’s autonomous software onboarding. Separate costmap, map-memory, planner, and control nodes connect sensing to motion, with Gazebo providing the simulation and Foxglove used to visualize the robot, maps, and planned path.',
+          'Converted LiDAR ranges into a local occupancy grid and inflated obstacles with a distance-based cost gradient. The map-memory component transforms each local grid into the world frame using the robot’s position and heading, retaining a global map as the robot moves.',
+          'Implemented A-star search across eight-connected grid cells, using a Euclidean heuristic and an obstacle-cost threshold to find a route from the robot to the goal. The resulting cells are converted back into world-coordinate waypoints and published as a ROS path; a failed search returns an empty path so control can stop.',
+          'Used Pure Pursuit to follow the route: find the nearest path point, choose a target beyond the look-ahead distance, transform it into the robot’s frame, and calculate curvature. Linear speed is bounded, and angular velocity is calculated from speed and curvature. Foxglove made it possible to inspect the relationship between obstacles, the planned route, and the robot’s motion during testing.',
         ],
+        links: [
+          { label: 'Autonomous onboarding · GitHub', href: 'https://github.com/Lew-Alex/Watonomous_Nav_ROS2' },
+        ],
+        video: {
+          src: '/videos/watonomous-navigation.mp4',
+          poster: '/images/watonomous-navigation.jpg',
+          caption: 'Autonomous onboarding submission: the navigation stack running in simulation.',
+        },
       },
 
       ],
