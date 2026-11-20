@@ -1932,3 +1932,19 @@
 .callout > .simple-list { margin-top: 1rem; }
 
 .block-side-image img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+
+/* Experience detail links: keep the flat rows, but make the action read as a
+   button by reusing the nav "Resume" button treatment. */
+.season-go {
+  color: var(--ink);
+  border: 1px solid var(--line-2);
+  padding: 0.5rem 0.8rem;
+  border-radius: 2px;
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.season-link:hover .season-go {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}

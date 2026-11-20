@@ -96,7 +96,7 @@ export default function Experience() {
                         </div>
 
                         <span className="season-go">
-                          Read <Icon name="chevronRight" size={13} />
+                          View details <Icon name="chevronRight" size={13} />
                         </span>
                       </Link>
                     ))}
